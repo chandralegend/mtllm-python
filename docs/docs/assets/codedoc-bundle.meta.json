@@ -74,11 +74,6 @@
       "name": "gatherFootnotes",
       "filename": "/Users/chandralegend/Desktop/Projects/mtllm-python/docs/.codedoc/node_modules/@codedoc/core/dist/es6/components/footnote/gather-footnotes.js",
       "hash": "fbb7HRnUZDck6H3cbVrqzw=="
-    },
-    {
-      "name": "reloadOnChange",
-      "filename": "/Users/chandralegend/Desktop/Projects/mtllm-python/docs/.codedoc/node_modules/@codedoc/core/dist/es6/serve/reload.js",
-      "hash": "zoWpBCY0or2Z4khehzEkyQ=="
     }
   ],
   "components": [
