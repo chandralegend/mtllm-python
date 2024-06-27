@@ -11,7 +11,7 @@ keywords = ["MTLLM", "Python", "NLP", "Language Model"]
 
 [tool.poetry.dependencies]
 python = "^3.12"
-mtllm = "^0.1.7"
+mtllm = "^0.1.14"
 
 
 [tool.poetry.group.dev.dependencies]

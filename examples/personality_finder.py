@@ -1,8 +1,8 @@
-from mtllm.llms import Anthropic
+from mtllm.llms import OpenAI
 from enum import Enum
 from mtllm_python import DefinedVariable, ChainofThoughts
 
-llm = Anthropic(model_name="claude-3-sonnet-20240229")
+llm = OpenAI()
 
 
 class Personality(Enum):

@@ -14,7 +14,7 @@ class Function:
         self,
         fn: Callable,
         llm: Any,
-        incl_info: list["DefinedVariable"],
+        incl_info: list,
         method: str = "Normal",
         tools: Optional[list[Tools]] = None,
         **kwargs: dict,
@@ -24,6 +24,7 @@ class Function:
         self.llm = llm
         self.incl_info = incl_info
         self.method = method
+        self.tools = tools
         self.kwargs = kwargs
 
     def __call__(self, *args: list, **kwargs: dict) -> "Output":
@@ -38,7 +39,7 @@ class ChainofThoughts(Function):
         self,
         fn: Callable,
         llm: Any,
-        incl_info: list["DefinedVariable"],
+        incl_info: list,
         **kwargs: dict,
     ) -> None:
         """Initializes the Chain of Thoughts Function."""
