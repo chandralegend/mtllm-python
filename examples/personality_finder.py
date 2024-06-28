@@ -1,31 +1,18 @@
 from mtllm.llms import OpenAI
 from enum import Enum
-from mtllm_python import DefinedVariable, ChainofThoughts
+from mtllm_python import DefinedVariable, Method, Function, Class
 
 llm = OpenAI()
 
 
 class Personality(Enum):
-    """
-    Description: Personality of the Person
-    Args:
-        INTROVERT: Person who is shy and reticent
-        EXTROVERT: Person who is outgoing and socially confident
-    """
+    """Personality of a Person."""
 
     INTROVERT = "Introvert"
     EXTROVERT = "Extrovert"
 
 
 class Person:
-    """
-    Description: Person
-    Args:
-        full_name (str): Fullname of the Person
-        yod (int): Year of Death
-        personality (Personality): Personality of the Person
-    """
-
     def __init__(self, full_name: str, yod: int, personality: Personality):
         self.full_name = full_name
         self.yod = yod
@@ -43,21 +30,24 @@ personality_examples = DefinedVariable(
 
 def get_person_info(name: str) -> Person:
     """
-    Description: Get Person Information
-    Args:
-        name (str): Name of the Person
-    Returns:
-        (Person): Person
+    Get Person Information
+    Inputs:
+        name: Name of the Person
+    Output: Person Object
     """
     pass
 
 
-get_person_info = ChainofThoughts(
-    fn=get_person_info, llm=llm, incl_info=(personality_examples)
+get_person_info = Function(
+    get_person_info,
+    llm,
+    [personality_examples],
+    Method.ChainOfThoughts,
+    types_needed=[Person, Personality],
 )
+person_obj = get_person_info("Martin Luther King Jr.")
+print(person_obj)
 
-
-person_obj = get_person_info("Martin Luther King Jr.").result
-print(
-    f"{person_obj.full_name} was a {person_obj.personality.value} person who died in {person_obj.yod}"
-)
+_Person = Class(Person, llm)
+person_obj = _Person("Mahatma Gandhi")
+print(person_obj)
